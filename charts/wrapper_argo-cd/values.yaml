@@ -2,8 +2,10 @@ argo-cd:
   dex:
     enabled: false
   server:
-    service:
-      type: LoadBalancer
+    ingress:
+      enabled: True
+      hosts:
+        - argo-cd.minikube1.marmite.zerotier.azulinho.com
     extraArgs:
       - --insecure
     config:
