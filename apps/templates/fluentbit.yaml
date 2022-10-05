@@ -1,0 +1,41 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: fluentbit
+  namespace: default
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  project: default
+  source:
+    chart: fluent-bit
+    helm:
+      values: |
+        config:
+          outputs: |
+            [OUTPUT]
+                name                 syslog
+                match                *
+                host                 192.168.0.254
+                port                 514
+                mode                 udp
+                syslog_format        rfc5424
+                syslog_maxsize       2048
+                syslog_severity_key  severity
+                syslog_facility_key  facility
+                syslog_hostname_key  hostname
+                syslog_appname_key   appname
+                syslog_procid_key    procid
+                syslog_msgid_key     msgid
+                syslog_sd_key        sd
+                syslog_message_key   message
+
+    repoURL: https://fluent.github.io/helm-charts
+    targetRevision: 0.20.9
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
