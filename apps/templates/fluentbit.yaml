@@ -22,7 +22,7 @@ spec:
                 host                 192.168.0.254
                 port                 514
                 mode                 udp
-                syslog_format        rfc3164
+                syslog_format        rfc5424
                 syslog_maxsize       2048
                 syslog_severity_key  severity
                 syslog_facility_key  facility
