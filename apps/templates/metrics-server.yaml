@@ -1,3 +1,5 @@
+# broken until
+# https://github.com/kubernetes-sigs/metrics-server/issues/1037
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -21,7 +23,10 @@ spec:
             - --kubelet-insecure-tls=true
             - --kubelet-preferred-address-types=InternalIP
     repoURL: https://charts.bitnami.com/bitnami
-    targetRevision: 6.2.0
+    # broken until
+    # https://github.com/kubernetes-sigs/metrics-server/issues/1037
+    #targetRevision: 6.2.0
+    targetRevision: 6.1.0
   syncPolicy:
     automated:
       prune: true
