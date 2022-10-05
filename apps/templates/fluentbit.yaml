@@ -30,7 +30,7 @@ spec:
                 syslog_appname_key   appname
                 syslog_procid_key    procid
                 syslog_msgid_key     msgid
-                syslog_sd_key        sd
+                syslog_sd_key        kubernetes
                 syslog_message_key   message
 
             [OUTPUT]
