@@ -33,6 +33,9 @@ spec:
                 syslog_sd_key        kubernetes
                 syslog_message_key   message
 
+            [OUTPUT]
+                name                 stdout
+                match                *
 
     repoURL: https://fluent.github.io/helm-charts
     targetRevision: 0.20.9
